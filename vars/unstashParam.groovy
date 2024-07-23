@@ -21,6 +21,8 @@ def call(String name, String fname = null) {
                     error "unstashParam: no workspace in current context"
                 }
 
+                 println("node name: " + env['NODE_NAME'])
+
                 if (env['NODE_NAME'].equals("master") || env['NODE_NAME'].equals("built-in")) {
                     workspace = new FilePath(null, env['WORKSPACE'])
                 } else {
@@ -28,11 +30,19 @@ def call(String name, String fname = null) {
                 }
 
                 filename = fname == null ? param.getOriginalFileName() : fname
+
+                println("filename: " + filename)
+                
                 file = workspace.child(filename)
 
+                println("file: " + file)
+                
                 destFolder = file.getParent()
                 destFolder.mkdirs()
 
+                println("param: " + param)
+                println("param.getFile: " + param.getFile())
+                
                 file.copyFrom(param.getFile())
                 return filename;
             }
