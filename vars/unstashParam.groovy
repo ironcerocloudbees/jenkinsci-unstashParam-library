@@ -41,9 +41,9 @@ def call(String name, String fname = null) {
                 destFolder.mkdirs()
 
                 println("param: " + param)
-                println("param.getFile: " + param.getFile())
+                println("param.getFile: " + param.getFile2())
                 
-                file.copyFrom(param.getFile())
+                file.copyFrom(param.getFile2())
                 return filename;
             }
         }
